@@ -1,24 +1,38 @@
 import React, { useState } from 'react';
 import './App.css';
- 
+
 function App() {
   const [tasks, setTasks] = useState([]);
   const [newTask, setNewTask] = useState('');
- 
+
   const handleAddTask = (e) => {
     e.preventDefault();
     if (newTask.trim() === '') return;
-    
+
     const task = {
       id: Date.now(),
       text: newTask,
       completed: false,
     };
-    
+
     setTasks([...tasks, task]);
     setNewTask('');
   };
- 
+
+  const handleAddImportantTask = (e) => {
+    e.preventDefault();
+    if (newTask.trim() === '') return;
+
+    const task = {
+      id: Date.now(),
+      text: `[Important] ${newTask}`,
+      completed: false,
+    };
+
+    setTasks([...tasks, task]);
+    setNewTask('');
+  };
+
   const handleToggleComplete = (taskId) => {
     setTasks(
       tasks.map((task) =>
@@ -26,11 +40,11 @@ function App() {
       )
     );
   };
- 
+
   const handleDeleteTask = (taskId) => {
     setTasks(tasks.filter((task) => task.id !== taskId));
   };
- 
+
   return (
     <div className="app-container">
       <div className="todo-container">
@@ -43,6 +57,7 @@ function App() {
             placeholder="Afegeix una nova tasca..."
           />
           <button type="submit">Afegir</button>
+          <button onClick={handleAddImportantTask}>Tasca Important</button>
         </form>
         <ul className="task-list">
           {tasks.map((task) => (
@@ -58,5 +73,5 @@ function App() {
     </div>
   );
 }
- 
+
 export default App;
