@@ -31,6 +31,7 @@ h1 {
   display: flex;
   gap: 10px;
   margin-bottom: 25px;
+  flex-wrap: wrap;
 }
  
 .task-form input {
@@ -102,4 +103,17 @@ h1 {
  
 .task-list li button:hover {
   background-color: #c82333;
+}
+
+.important-btn {
+  background-color: #ff6b35 !important;
+}
+
+.important-btn:hover {
+  background-color: #ff5722 !important;
+}
+
+.important-task {
+  color: #dc3545 !important;
+  font-weight: bold;
 }
